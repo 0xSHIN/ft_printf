@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   c.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alyildiz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 06:33:15 by alyildiz          #+#    #+#             */
-/*   Updated: 2023/05/06 13:41:23 by alyildiz         ###   ########.fr       */
+/*   Created: 2023/05/07 21:34:57 by alyildiz          #+#    #+#             */
+/*   Updated: 2023/05/07 22:46:31 by alyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	print_c(va_list arguments)
 {
-	write(fd, &c, 1);
+	char	c;
+
+	c = (char)va_arg(arguments, int);
+	write(1, &c, 1);
+	return (1);
 }

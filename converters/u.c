@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   u.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alyildiz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 13:44:28 by alyildiz          #+#    #+#             */
-/*   Updated: 2023/05/06 14:30:27 by alyildiz         ###   ########.fr       */
+/*   Created: 2023/05/08 04:49:39 by alyildiz          #+#    #+#             */
+/*   Updated: 2023/05/08 07:33:12 by alyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-void    ft_putnbr_base(unsigned long long int nb, char *base)
+int	print_u(va_list arguments)
 {
-    if (nb >= 16)
-    {
-        ft_putnbr_base(nb / 16, base);
-        write(1, &base[nb % 16], 1);
-    }
-    else
-        write(1, &base[nb], 1);
+	unsigned long long	nbr;
+
+	nbr = va_arg(arguments, unsigned int);
+	ft_unsigned_putnbr(nbr);
+	return (ft_countnbr(nbr));
 }

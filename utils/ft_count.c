@@ -1,41 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_count.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alyildiz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/07 21:37:45 by alyildiz          #+#    #+#             */
-/*   Updated: 2023/05/08 07:44:16 by alyildiz         ###   ########.fr       */
+/*   Created: 2023/05/08 07:33:37 by alyildiz          #+#    #+#             */
+/*   Updated: 2023/05/08 07:41:20 by alyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-int	ft_printf(const char *str, ...)
+int	ft_countnbr(long long int nb)
 {
-	va_list	arguments;
-	size_t	i;
-	size_t	len;
-	int		count;
+	int	count;
 
 	count = 0;
-	i = 0;
-	len = ft_strlen((char *)str);
-	va_start(arguments, str);
-	while (i < len)
+	if (nb < 0)
 	{
-		if (str[i] == '%' && check(str[i + 1]) == 1)
-		{
-			count += flags(str[i + 1], arguments);
-			i += 2;
-		}
-		else if (str[i])
-		{
-			write(1, &str[i], 1);
+		nb *= -1;
+		count++;
+	}
+	if (nb == 0)
+		return (1);
+	while (nb > 0)
+	{
+			nb /= 10;
 			count++;
-			i++;
-		}
 	}
 	return (count);
+}
+
+int	ft_counthex(unsigned long long int nb)
+{
+	int	count;
+
+	count = 0;
+	if (nb == 0)
+		return (1);
+	while (nb > 0)
+	{
+			nb /= 16;
+			count++;
+	}
+	return (count);
+}
+
+size_t	ft_strlen(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }

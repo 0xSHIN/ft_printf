@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   p.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alyildiz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/07 21:37:45 by alyildiz          #+#    #+#             */
-/*   Updated: 2023/05/08 07:44:16 by alyildiz         ###   ########.fr       */
+/*   Created: 2023/05/07 21:36:37 by alyildiz          #+#    #+#             */
+/*   Updated: 2023/05/08 07:31:50 by alyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-int	ft_printf(const char *str, ...)
+int	print_p(va_list arguments)
 {
-	va_list	arguments;
-	size_t	i;
-	size_t	len;
-	int		count;
+	unsigned long	address;
 
-	count = 0;
-	i = 0;
-	len = ft_strlen((char *)str);
-	va_start(arguments, str);
-	while (i < len)
+	address = (unsigned long)va_arg(arguments, void *);
+	if (address == 0)
 	{
-		if (str[i] == '%' && check(str[i + 1]) == 1)
-		{
-			count += flags(str[i + 1], arguments);
-			i += 2;
-		}
-		else if (str[i])
-		{
-			write(1, &str[i], 1);
-			count++;
-			i++;
-		}
+		write(1, "(nil)", 5);
+		return (5);
 	}
-	return (count);
+	write(1, "0x", 2);
+	ft_putnbr_base(address, "0123456789abcdef");
+	return (ft_counthex(address) + 2);
 }

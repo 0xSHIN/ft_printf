@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alyildiz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/07 21:37:45 by alyildiz          #+#    #+#             */
-/*   Updated: 2023/05/08 07:44:16 by alyildiz         ###   ########.fr       */
+/*   Created: 2023/05/07 22:40:19 by alyildiz          #+#    #+#             */
+/*   Updated: 2023/05/07 22:57:11 by alyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-int	ft_printf(const char *str, ...)
+int	check(char c)
 {
-	va_list	arguments;
 	size_t	i;
-	size_t	len;
-	int		count;
+	char	*charset;
 
-	count = 0;
 	i = 0;
-	len = ft_strlen((char *)str);
-	va_start(arguments, str);
-	while (i < len)
+	charset = "cspdiuxX%";
+	while (charset[i] != '\0')
 	{
-		if (str[i] == '%' && check(str[i + 1]) == 1)
-		{
-			count += flags(str[i + 1], arguments);
-			i += 2;
-		}
-		else if (str[i])
-		{
-			write(1, &str[i], 1);
-			count++;
-			i++;
-		}
+		if (charset[i] == c)
+			return (1);
+		i++;
 	}
-	return (count);
+	return (0);
 }
