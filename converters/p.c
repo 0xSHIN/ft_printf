@@ -18,10 +18,7 @@ int	print_p(va_list arguments)
 
 	address = (unsigned long)va_arg(arguments, void *);
 	if (address == 0)
-	{
-		write(1, "(nil)", 5);
-		return (5);
-	}
+		return (write(1, "(nil)", 5));
 	write(1, "0x", 2);
 	ft_putnbr_base(address, "0123456789abcdef");
 	return (ft_counthex(address) + 2);

@@ -6,7 +6,7 @@
 /*   By: alyildiz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 21:37:45 by alyildiz          #+#    #+#             */
-/*   Updated: 2023/05/08 07:44:16 by alyildiz         ###   ########.fr       */
+/*   Updated: 2023/05/08 21:30:02 by alyildiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_printf(const char *str, ...)
 
 	count = 0;
 	i = 0;
-	len = ft_strlen((char *)str);
+	len = ft_strlen(str);
 	va_start(arguments, str);
 	while (i < len)
 	{
@@ -32,8 +32,7 @@ int	ft_printf(const char *str, ...)
 		}
 		else if (str[i])
 		{
-			write(1, &str[i], 1);
-			count++;
+			count += write(1, &str[i], 1);
 			i++;
 		}
 	}

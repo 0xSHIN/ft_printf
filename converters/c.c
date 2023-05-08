@@ -17,6 +17,5 @@ int	print_c(va_list arguments)
 	char	c;
 
 	c = (char)va_arg(arguments, int);
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }

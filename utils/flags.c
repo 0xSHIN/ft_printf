@@ -14,24 +14,21 @@
 
 int	flags(char c, va_list arguments)
 {
-	int	count;
-
-	count = 0;
 	if (c == 'c')
-		count += print_c(arguments);
+		return (print_c(arguments));
 	else if (c == 's')
-		count += print_s(arguments);
+		return (print_s(arguments));
 	else if (c == 'p')
-		count += print_p(arguments);
+		return (print_p(arguments));
 	else if (c == 'd' || c == 'i')
-		count += print_d_i(arguments);
+		return (print_d_i(arguments));
 	else if (c == 'u')
-		count += print_u(arguments);
+		return (print_u(arguments));
 	else if (c == 'x')
-		count += print_x(arguments);
+		return (print_x(arguments));
 	else if (c == 'X')
-		count += print_upcase_x(arguments);
+		return (print_upcase_x(arguments));
 	else if (c == '%')
-		count += print_percent();
-	return (count);
+		return (print_percent());
+	return (0);
 }

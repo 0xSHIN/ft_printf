@@ -47,7 +47,7 @@ int	ft_counthex(unsigned long long int nb)
 	return (count);
 }
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 

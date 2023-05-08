@@ -18,10 +18,7 @@ int	print_s(va_list arguments)
 
 	str = (char *)va_arg(arguments, char *);
 	if (str == NULL)
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
+		return (write(1, "(null)", 6));
 	else
 		ft_putstr(str);
 	return (ft_strlen(str));

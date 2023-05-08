@@ -12,14 +12,14 @@
 
 #include "../ft_printf.h"
 
-int	check(char c)
+bool	check(char c)
 {
 	size_t	i;
 	char	*charset;
 
 	i = 0;
 	charset = "cspdiuxX%";
-	while (charset[i] != '\0')
+	while (charset[i])
 	{
 		if (charset[i] == c)
 			return (1);
