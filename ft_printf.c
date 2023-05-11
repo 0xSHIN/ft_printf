@@ -21,6 +21,8 @@ int	ft_printf(const char *str, ...)
 
 	count = 0;
 	i = 0;
+	if (!str)
+		return (-1);
 	len = ft_strlen(str);
 	va_start(arguments, str);
 	while (i < len)
@@ -36,5 +38,6 @@ int	ft_printf(const char *str, ...)
 			i++;
 		}
 	}
+	va_end(arguments);
 	return (count);
 }
