@@ -19,8 +19,6 @@ int	ft_printf(const char *str, ...)
 	size_t			len;
 	static int		count = 0;
 	
-	count = 0;
-	i = 0;
 	if (!str)
 		return (-1);
 	len = ft_strlen(str);
