@@ -14,11 +14,11 @@
 
 int	ft_printf(const char *str, ...)
 {
-	va_list	arguments;
-	size_t	i;
-	size_t	len;
-	int		count;
-
+	va_list			arguments;
+	static size_t	i = 0;
+	size_t			len;
+	static int		count = 0;
+	
 	count = 0;
 	i = 0;
 	if (!str)
