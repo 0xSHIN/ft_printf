@@ -15,10 +15,12 @@
 int	ft_printf(const char *str, ...)
 {
 	va_list			arguments;
-	static size_t	i = 0;
+	size_t	i;
 	size_t			len;
-	static int		count = 0;
+	int		count;
 	
+	i = 0;
+	count = 0;
 	if (!str)
 		return (-1);
 	len = ft_strlen(str);
@@ -31,10 +33,7 @@ int	ft_printf(const char *str, ...)
 			i += 2;
 		}
 		else if (str[i])
-		{
-			count += write(1, &str[i], 1);
-			i++;
-		}
+			count += write(1, &str[i++], 1);
 	}
 	va_end(arguments);
 	return (count);
